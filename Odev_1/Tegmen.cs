@@ -8,5 +8,19 @@ namespace Odev_1
     class Tegmen : Asker
     {
         // ..... //
+        public override void AteşEt()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Bekle()
+        {
+            //EMPTYYYYYY
+        }
+
+        public override void HareketEt()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

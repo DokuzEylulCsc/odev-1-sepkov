@@ -7,10 +7,10 @@ namespace Odev_1
 {
     class Takim
     {
-        Asker[] birlik = new Asker[7];
+        private Asker[] birlik = new Asker[7];
 
         public Asker[] Birlik { get { return birlik; } set { birlik = value; } }
-
-        // ..... //
+        
+        
     }
 }

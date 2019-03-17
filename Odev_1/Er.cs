@@ -5,8 +5,21 @@ using System.Text;
 
 namespace Odev_1
 {
-    class Er : Asker 
+    class Er : Asker
     {
-        // ..... //
+        public override void AteşEt()
+        {
+            
+        }
+
+        public override void Bekle()
+        {
+            //EMPTYYYYYYYYY
+        }
+
+        public override void HareketEt()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

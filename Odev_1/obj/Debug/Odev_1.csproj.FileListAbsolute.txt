@@ -1,0 +1,6 @@
+C:\Users\furka\Source\Repos\odev-1-sepkov\Odev_1\bin\Debug\Odev_1.exe
+C:\Users\furka\Source\Repos\odev-1-sepkov\Odev_1\bin\Debug\Odev_1.pdb
+C:\Users\furka\Source\Repos\odev-1-sepkov\Odev_1\obj\Debug\Odev_1.csprojAssemblyReference.cache
+C:\Users\furka\Source\Repos\odev-1-sepkov\Odev_1\obj\Debug\Odev_1.csproj.CoreCompileInputs.cache
+C:\Users\furka\Source\Repos\odev-1-sepkov\Odev_1\obj\Debug\Odev_1.exe
+C:\Users\furka\Source\Repos\odev-1-sepkov\Odev_1\obj\Debug\Odev_1.pdb
