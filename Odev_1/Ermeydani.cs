@@ -94,7 +94,7 @@ namespace Odev_1
             }
             else if (işlem < 0.9)
             {
-                asker.HareketEt();
+                //asker.HareketEt();
             }
             else
             {

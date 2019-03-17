@@ -24,7 +24,6 @@ namespace Odev_1
                 Console.WriteLine(t2.Birlik[i].hangiTakım);
             }
             */
-            //Oyun başlasın
             /*
             Console.WriteLine("Takım 1 Konumları");
             for (int i = 0; i < 7; i++)
@@ -38,21 +37,49 @@ namespace Odev_1
                 Console.WriteLine("X: " + t2.Birlik[i].Koordinat.ReturnX() + ", Y:" + t2.Birlik[i].Koordinat.ReturnY());
             }*/
 
+
+
+            //Oyun başlasın
+            bool herkesÖlüMü = false;
             while (true)
             {
                 for (int i = 0; i < 7; i++)
                 {
-                    if(t1.Birlik[i].sağlıkPuanı == 0);
+                    if(t1.Birlik[i].sağlıkPuanı == 0)
                     t1.Birlik[i].yaşıyorMu = false;
                 }
-                oyun.İşlemYap();
+                foreach (var asker in t1.Birlik)
+                {
+                    oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
+                }
+                foreach (var asker in t2.Birlik)
+                {
+                    oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
+                }
+                //TODO: Debug amaçlı silmeyi unutma
+                foreach (var item in t2.Birlik)
+                {
+                    Console.WriteLine(item.sağlıkPuanı);
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    if (t1.Birlik[i].sağlıkPuanı != 0)
+                        break;
+                    else if(i == 6)
+                        herkesÖlüMü = true;
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    if (t1.Birlik[i].sağlıkPuanı != 0)
+                        break;
+                    else if(i == 6)
+                        herkesÖlüMü = true;
+                }
+                if (herkesÖlüMü)
                 break;
             }
 
-            foreach (var item in t2.Birlik)
-            {
-                Console.WriteLine(item.sağlıkPuanı);
-            }
+            
             Console.Read();
         }
     }
