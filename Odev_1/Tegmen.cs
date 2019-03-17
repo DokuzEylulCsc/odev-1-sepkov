@@ -7,10 +7,14 @@ namespace Odev_1
 {
     class Tegmen : Asker
     {
-        // ..... //
-        public override void AteşEt()
+        public override void AteşEt(List<Asker> düşman)
         {
-            throw new NotImplementedException();
+            Random rd = new Random();
+            int[] hasar = { 10, 20, 25 };
+            foreach (var asker in düşman)
+            {
+                asker.sağlıkPuanı = asker.sağlıkPuanı - hasar[rd.Next()];
+            }
         }
 
         public override void Bekle()
@@ -18,9 +22,10 @@ namespace Odev_1
             //EMPTYYYYYY
         }
 
-        public override void HareketEt()
+        public override void HareketEt(Bolge[] olasıKonumlar)
         {
-            throw new NotImplementedException();
+
         }
+
     }
 }

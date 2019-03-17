@@ -6,15 +6,11 @@ using System.Text;
 namespace Odev_1
 {
     class Ermeydani
-    {
+    {//Oyun mantığı burada işleniyor.
         static bool takımSeçimi = false;
 
         Bolge[,] harita = new Bolge[16, 16];
-        Takim takım1 = new Takim();
-        Takim takım2 = new Takim();
-        
-        public Takim Takım1 { get { return takım1; } set { takım1 = value; } }
-        public Takim Takım2 { get { return takım2; } set { takım2 = value; } }
+
         public Bolge[,] Harita { get { return harita; } set { harita = value; } }
         
         public void takımOlustur(Takim takım)
@@ -67,6 +63,42 @@ namespace Odev_1
                 } while (x != b1.ReturnX() && y != b1.ReturnY() && x != b2.ReturnX() && y != b2.ReturnY());
                 takım1.Birlik[i].Koordinat = b1;
                 takım2.Birlik[i].Koordinat = b2;
+            }
+        }
+
+        public List<Asker> askerVarsaAteşEt(Takim düşmanTakım,Bolge merkezKonum)
+        {//Verilen bölge içindeki askerleri tespit eden fonksiyon.
+            List<Asker> düşmanlar = new List<Asker>();
+            for (int i = 0; i < 7; i++)
+            {
+                if(düşmanTakım.Birlik[i].Koordinat.ReturnX() - merkezKonum.ReturnX() < 2 && düşmanTakım.Birlik[i].Koordinat.ReturnX() - merkezKonum.ReturnX() > -2)
+                if(düşmanTakım.Birlik[i].Koordinat.ReturnY() - merkezKonum.ReturnY() < 2 && düşmanTakım.Birlik[i].Koordinat.ReturnY() - merkezKonum.ReturnY() > -2)
+                    {
+                        düşmanlar.Add(düşmanTakım.Birlik[i]);
+                    }
+            }
+            return düşmanlar;
+        }
+
+        public void İşlemYap(Asker asker,Takim takım1,Takim takım2,Bolge merkezBolge)
+        {//30 ateş,60 hareket, 10 bekleme
+            Random rd = new Random();
+            double işlem = rd.NextDouble();
+            if (işlem < 0.3)
+            {
+                if(asker.hangiTakım == takım1.Birlik[0].hangiTakım)
+                    asker.AteşEt(askerVarsaAteşEt(takım2, asker.Koordinat));
+                else
+                    asker.AteşEt(askerVarsaAteşEt(takım1, asker.Koordinat));
+
+            }
+            else if (işlem < 0.9)
+            {
+                asker.HareketEt();
+            }
+            else
+            {
+                asker.Bekle();
             }
         }
     }

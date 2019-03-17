@@ -7,10 +7,14 @@ namespace Odev_1
 {
     class Yuzbasi : Asker
     {
-        // ..... //
-        public override void AteşEt()
+        public override void AteşEt(List<Asker> düşman)
         {
-            throw new NotImplementedException();
+            Random rd = new Random();
+            int[] hasar = { 15, 25, 40 };
+            foreach (var asker in düşman)
+            {
+                asker.sağlıkPuanı = asker.sağlıkPuanı - hasar[rd.Next()];
+            }
         }
 
         public override void Bekle()
@@ -18,9 +22,10 @@ namespace Odev_1
             //EMPTYYYYY
         }
 
-        public override void HareketEt()
+        public override void HareketEt(Bolge[] olasıKonumlar)
         {
-            throw new NotImplementedException();
+
         }
+        
     }
 }
