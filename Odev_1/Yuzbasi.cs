@@ -13,7 +13,10 @@ namespace Odev_1
             int[] hasar = { 15, 25, 40 };
             foreach (var asker in düşman)
             {
-                asker.sağlıkPuanı = asker.sağlıkPuanı - hasar[rd.Next()];
+                if (asker.sağlıkPuanı > verilecekHasar)
+                    asker.sağlıkPuanı = 0;
+                else
+                    asker.sağlıkPuanı = asker.sağlıkPuanı - verilecekHasar;
             }
         }
 

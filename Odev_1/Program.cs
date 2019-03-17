@@ -17,7 +17,6 @@ namespace Odev_1
             oyun.takımOlustur(t2);
             oyun.haritaYerleşimi(t1, t2);
 
-
             /*
             for (int i = 0; i < 7; i++)
             {
@@ -38,7 +37,18 @@ namespace Odev_1
             {
                 Console.WriteLine("X: " + t2.Birlik[i].Koordinat.ReturnX() + ", Y:" + t2.Birlik[i].Koordinat.ReturnY());
             }*/
-            t1.Birlik[1].AteşEt(oyun.askerVarsaAteşEt(t2,t1.Birlik[1].Koordinat));
+
+            while (true)
+            {
+                for (int i = 0; i < 7; i++)
+                {
+                    if(t1.Birlik[i].sağlıkPuanı == 0);
+                    t1.Birlik[i].yaşıyorMu = false;
+                }
+                oyun.İşlemYap();
+                break;
+            }
+
             foreach (var item in t2.Birlik)
             {
                 Console.WriteLine(item.sağlıkPuanı);
