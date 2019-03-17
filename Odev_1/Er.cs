@@ -9,16 +9,20 @@ namespace Odev_1
     {
         public override void AteşEt(List<Asker> düşman)
         {
-            Random rd = new Random();
-            int[] hasar = { 10, 15, 20 };
-            int verilecekHasar = hasar[rd.Next()];
-            foreach (var asker in düşman)
+            if (yaşıyorMu)
             {
-                if (asker.sağlıkPuanı > verilecekHasar)
-                    asker.sağlıkPuanı = 0;
-                else
-                    asker.sağlıkPuanı = asker.sağlıkPuanı - verilecekHasar;
+                Random rd = new Random();
+                int[] hasar = { 10, 15, 20 };
+                int verilecekHasar = hasar[rd.Next()];
+                foreach (var asker in düşman)
+                {
+                    if (asker.sağlıkPuanı > verilecekHasar)
+                        asker.sağlıkPuanı = 0;
+                    else
+                        asker.sağlıkPuanı = asker.sağlıkPuanı - verilecekHasar;
+                }
             }
+
         }
 
         public override void Bekle()
@@ -28,7 +32,10 @@ namespace Odev_1
 
         public override void HareketEt(Bolge[] olasıKonumlar)
         {
+            if (yaşıyorMu)
+            {
 
+            }
         }
         
     }
