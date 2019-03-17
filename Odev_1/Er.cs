@@ -11,6 +11,7 @@ namespace Odev_1
         {
             Random rd = new Random();
             int[] hasar = { 10, 15, 20 };
+            int verilecekHasar = hasar[rd.Next()];
             foreach (var asker in düşman)
             {
                 if (asker.sağlıkPuanı > verilecekHasar)
