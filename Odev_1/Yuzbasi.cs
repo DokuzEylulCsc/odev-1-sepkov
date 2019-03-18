@@ -18,9 +18,9 @@ namespace Odev_1
                 int verilecekHasar = hasar[rd.Next(3)];
                 foreach (var asker in düşman)
                 {
-                    Console.WriteLine(takım + "Yüzbaşı'sı düşman" + asker.GetType().Name + "askerine ateş etti");
-                    streamWriter.WriteLine(takım + "Yüzbaşı'sı düşman" + asker.GetType().Name + " askerine ateş etti");
-                    if (asker.sağlıkPuanı > verilecekHasar)
+                    Console.WriteLine(takım + "Yüzbaşı'sı düşman " + asker.GetType().Name + " askerine ateş etti. Hasar:" + verilecekHasar);
+                    streamWriter.WriteLine(takım + "Yüzbaşı'sı düşman " + asker.GetType().Name + " askerine ateş etti. Hasar:" + verilecekHasar);
+                    if (asker.sağlıkPuanı < verilecekHasar)
                         asker.sağlıkPuanı = 0;
                     else
                         asker.sağlıkPuanı = asker.sağlıkPuanı - verilecekHasar;

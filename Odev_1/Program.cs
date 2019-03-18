@@ -12,6 +12,7 @@ namespace Odev_1
         {
             StreamWriter streamWriter = File.AppendText("Kayıt.txt");
             streamWriter.WriteLine("Oyun başladı");
+            Console.WriteLine("Oyun başladı. Askerler birbirini bulup ateş edene kadar bir süre ekran boş olabilir.");
             //Oyun kurulumu
             Random rd = new Random();
             Ermeydani oyun = new Ermeydani();
@@ -62,14 +63,22 @@ namespace Odev_1
                     if (t1.Birlik[i].sağlıkPuanı > 0)
                         break;
                     else if(i == 6)
+                    {
                         herkesÖlüMü = true;
+                        Console.WriteLine("Takım 1 öldü");
+                        streamWriter.WriteLine("Takım 1 öldü");
+                    }
                 }
                 for (int i = 0; i < 7; i++)
                 {
                     if (t1.Birlik[i].sağlıkPuanı > 0)
                         break;
-                    else if(i == 6)
+                    else if (i == 6)
+                    {
                         herkesÖlüMü = true;
+                        Console.WriteLine("Takım 2 öldü");
+                        streamWriter.WriteLine("Takım 2 öldü");
+                    }
                 }
                 if (herkesÖlüMü)
                 break;
