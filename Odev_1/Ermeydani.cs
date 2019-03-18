@@ -50,6 +50,7 @@ namespace Odev_1
         {
             //Takım1 haritanın sol alt köşesinde, Takım2 ise sağ üst köşede yer alacak.
             Random rd = new Random();
+            bool tekrarOluştur = false;
             int x, y;
             for (int i = 0; i < 7; i++)
             {
@@ -60,12 +61,20 @@ namespace Odev_1
                     y = rd.Next(5);
                     b1 = new Bolge(x + 10, y);
                     b2 = new Bolge(x, y + 10);
-                } while (x != b1.ReturnX() && y != b1.ReturnY() && x != b2.ReturnX() && y != b2.ReturnY());
+                    for (int j = 0; j < i; j++)
+                    {
+                        if ((takım1.Birlik[j].Koordinat.ReturnX() == b1.ReturnX() && takım1.Birlik[j].Koordinat.ReturnY() == b1.ReturnY()) || (takım2.Birlik[j].Koordinat.ReturnX() == b2.ReturnX() && takım2.Birlik[j].Koordinat.ReturnY() == b2.ReturnY()))
+                        {
+                            tekrarOluştur = true;
+                            break;
+                        }
+                        tekrarOluştur = false;
+                    }
+                } while (tekrarOluştur);
                 takım1.Birlik[i].Koordinat = b1;
                 takım2.Birlik[i].Koordinat = b2;
             }
         }
-
         public List<Asker> BölgedekiDüşmanlar(Asker ateşEdecekAsker,Takim düşmanTakım,Bolge merkezKonum)
         {//Verilen bölge içindeki askerleri tespit eden fonksiyon.
             List<Asker> düşmanlar = new List<Asker>();
@@ -84,12 +93,13 @@ namespace Odev_1
                 if(düşmanTakım.Birlik[i].Koordinat.ReturnX() - merkezKonum.ReturnX() < rütbe && düşmanTakım.Birlik[i].Koordinat.ReturnX() - merkezKonum.ReturnX() > -rütbe)
                 if(düşmanTakım.Birlik[i].Koordinat.ReturnY() - merkezKonum.ReturnY() < rütbe && düşmanTakım.Birlik[i].Koordinat.ReturnY() - merkezKonum.ReturnY() > -rütbe)
                     {
+                        if(düşmanTakım.Birlik[i].yaşıyorMu)
                         düşmanlar.Add(düşmanTakım.Birlik[i]);
+                        Console.WriteLine("Tespit edilen düşman sayısı" + düşmanlar.Count.ToString());
                     }
             }
             return düşmanlar;
         }
-
         public void İşlemYap(Asker asker,Takim takım1,Takim takım2,Bolge merkezBolge)
         {//30 ateş,60 hareket, 10 bekleme
             Random rd = new Random();
@@ -100,7 +110,6 @@ namespace Odev_1
                     asker.AteşEt(BölgedekiDüşmanlar(asker, takım2, asker.Koordinat));
                 else
                     asker.AteşEt(BölgedekiDüşmanlar(asker, takım1, asker.Koordinat));
-
             }
             else if (işlem < 0.9)
             {
@@ -108,6 +117,9 @@ namespace Odev_1
             }
             else
             {
+                string takım;
+                takım = asker.hangiTakım ? "Takım 1" : "Takım 2";
+                Console.WriteLine(takım + " askeri bekledi");
                 asker.Bekle();
             }
         }

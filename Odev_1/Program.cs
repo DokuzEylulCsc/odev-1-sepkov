@@ -17,30 +17,16 @@ namespace Odev_1
             oyun.TakımOlustur(t2);
             oyun.HaritaYerleşimi(t1, t2);
 
-            /*
             for (int i = 0; i < 7; i++)
             {
-                Console.WriteLine(t1.Birlik[i].hangiTakım);
-                Console.WriteLine(t2.Birlik[i].hangiTakım);
+                Console.WriteLine("Takım 1 Koordinatları -> " + t1.Birlik[i].Koordinat.ReturnX() + " " + t1.Birlik[i].Koordinat.ReturnY());
             }
-            */
-            /*
-            Console.WriteLine("Takım 1 Konumları");
             for (int i = 0; i < 7; i++)
             {
-                Console.WriteLine("X: " + t1.Birlik[i].Koordinat.ReturnX() + ", Y:" + t1.Birlik[i].Koordinat.ReturnY());
+                Console.WriteLine("Takım 2 Koordinatları -> " + t2.Birlik[i].Koordinat.ReturnX() + " " + t2.Birlik[i].Koordinat.ReturnY());
             }
-            Console.WriteLine("Takım 2 Konumları");
-
-            for (int i = 0; i < 7; i++)
-            {
-                Console.WriteLine("X: " + t2.Birlik[i].Koordinat.ReturnX() + ", Y:" + t2.Birlik[i].Koordinat.ReturnY());
-            }*/
-
-
-
             //Oyun başlasın
-            bool herkesÖlüMü = false;
+            /*bool herkesÖlüMü = false;
             Asker asker;
             Random rd = new Random();
             while (true)
@@ -55,29 +41,33 @@ namespace Odev_1
                 asker = t2.Birlik[rd.Next(7)];//Her seferinde takım 2nin rastgele bir askeri işlem yapacak.
                 oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
                 //TODO: Debug amaçlı silmeyi unutma
-                foreach (var item in t2.Birlik)
-                {
-                    Console.WriteLine(item.sağlıkPuanı);
-                }
                 for (int i = 0; i < 7; i++)
                 {
-                    if (t1.Birlik[i].sağlıkPuanı != 0)
+                    Console.WriteLine(t1.Birlik[i].sağlıkPuanı);
+                    Console.WriteLine(t2.Birlik[i].sağlıkPuanı);
+
+                }
+
+                for (int i = 0; i < 7; i++)
+                {
+                    if (t1.Birlik[i].sağlıkPuanı > 0)
                         break;
                     else if(i == 6)
                         herkesÖlüMü = true;
                 }
                 for (int i = 0; i < 7; i++)
                 {
-                    if (t1.Birlik[i].sağlıkPuanı != 0)
+                    if (t1.Birlik[i].sağlıkPuanı > 0)
                         break;
                     else if(i == 6)
                         herkesÖlüMü = true;
                 }
                 if (herkesÖlüMü)
                 break;
-            }
+                //System.Threading.Thread.Sleep(1);
+            }*/
 
-            
+
             Console.Read();
         }
     }

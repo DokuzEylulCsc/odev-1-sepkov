@@ -11,6 +11,9 @@ namespace Odev_1
         {
             if (yaşıyorMu)
             {
+                string takım;
+                takım = hangiTakım ? "Takım 1" : "Takım 2";
+                Console.WriteLine(takım + "Er'i ateş etti");
                 Random rd = new Random();
                 int[] hasar = { 10, 15, 20 };
                 int verilecekHasar = hasar[rd.Next(3)];
@@ -36,28 +39,27 @@ namespace Odev_1
             takım = hangiTakım ? "Takım 1" : "Takım 2";
             Random rd = new Random();
             bool yukarı = rd.Next(2) == 1 ? true : false;
-            Bolge gidilecekBolge;
             if (yaşıyorMu)
             {
-                if (Koordinat.ReturnY() != 0 && yukarı == true)//Yukarı git
+                if (Koordinat.ReturnY() > 0 && yukarı == true)//Yukarı git
                 {
-                    gidilecekBolge = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() - 1);
-                    Console.WriteLine(takım + "Er'i yukarı hareket etti.");
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() - 1);
+                    Console.WriteLine(takım + "Er'i yukarı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
-                else if (yukarı == true)//Mümkün değilse sola git.
+                else if (Koordinat.ReturnX() > 0 && yukarı == true)//Mümkün değilse sola git.
                 {
-                    gidilecekBolge = new Bolge(Koordinat.ReturnX() - 1, Koordinat.ReturnY());
-                    Console.WriteLine(takım + "Er'i sola hareket etti.");
+                    Koordinat = new Bolge(Koordinat.ReturnX() - 1, Koordinat.ReturnY());
+                    Console.WriteLine(takım + "Er'i sola hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
-                if (Koordinat.ReturnY() != 15 && yukarı == false)//Aşağı git
+                if (Koordinat.ReturnY() < 15 && yukarı == false)//Aşağı git
                 {
-                    gidilecekBolge = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() + 1);
-                    Console.WriteLine(takım + "Er'i aşağı hareket etti.");
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() + 1);
+                    Console.WriteLine(takım + "Er'i aşağı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
-                else if (yukarı == false)//Mümkün değilse sağa git.
+                else if (Koordinat.ReturnX() < 15 && yukarı == false)//Mümkün değilse sağa git.
                 {
-                    gidilecekBolge = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY());
-                    Console.WriteLine(takım + "Er'i sağa hareket etti.");
+                    Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY());
+                    Console.WriteLine(takım + "Er'i sağa hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
             }
         }
