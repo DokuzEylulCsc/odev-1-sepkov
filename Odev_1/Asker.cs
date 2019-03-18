@@ -16,11 +16,11 @@ namespace Odev_1
         public Random rd = new Random(); //Full random sayılar için
 
         //Abstract sınıfların implementasyonları çoçuk sınıflarda gerçekleştirilmelidir.
-        public abstract void HareketEt();
+        public abstract void HareketEt(StreamWriter streamWriter);
 
-        public abstract void Bekle();
+        public abstract void Bekle(StreamWriter streamWriter);
 
-        public abstract void AteşEt(List<Asker> düşman);
+        public abstract void AteşEt(List<Asker> düşman,StreamWriter streamWriter);
 
 
         // ..... //

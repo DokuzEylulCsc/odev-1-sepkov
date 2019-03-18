@@ -8,19 +8,18 @@ namespace Odev_1
 {
     class Er : Asker
     {
-        StreamWriter streamWriter = File.AppendText("Kayıt.txt");
-        public override void AteşEt(List<Asker> düşman)
+        public override void AteşEt(List<Asker> düşman,StreamWriter streamWriter)
         {
             if (yaşıyorMu)
             {
                 string takım;
                 takım = hangiTakım ? "Takım 1" : "Takım 2";
-                Console.WriteLine(takım + "Er'i ateş etti");
-                streamWriter.WriteLine(takım + "Er'i ateş etti");
                 int[] hasar = { 10, 15, 20 };
                 int verilecekHasar = hasar[rd.Next(3)];
                 foreach (var asker in düşman)
                 {
+                    Console.WriteLine(takım + "Er'i düşman" + asker.GetType().Name + "askerine ateş etti");
+                    streamWriter.WriteLine(takım + "Er'i düşman" + asker.GetType().Name + " askerine ateş etti");
                     if (asker.sağlıkPuanı > verilecekHasar)
                         asker.sağlıkPuanı = 0;
                     else
@@ -29,18 +28,21 @@ namespace Odev_1
                     {
                         asker.yaşıyorMu = false;
                         streamWriter.WriteLine("ve öldürdü");
+                        Console.WriteLine(" ve öldürdü");
                     }
                 }
             }
 
         }
 
-        public override void Bekle()
+        public override void Bekle(StreamWriter streamWriter)
         {
-            //EMPTYYYYYYYYY
+            string takım;
+            takım = hangiTakım ? "Takım 1" : "Takım 2";
+            streamWriter.WriteLine(takım + "Er'i bekledi");
         }
 
-        public override void HareketEt()
+        public override void HareketEt(StreamWriter streamWriter)
         {
             string takım;
             takım = hangiTakım ? "Takım 1" : "Takım 2";
@@ -50,25 +52,21 @@ namespace Odev_1
                 if (Koordinat.ReturnY() > 0 && yukarı == true)//Yukarı git
                 {
                     Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() - 1);
-                    Console.WriteLine(takım + "Er'i yukarı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                     streamWriter.WriteLine(takım + "Er'i yukarı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnX() < 15 && yukarı == true)//Mümkün değilse sağa git.
                 {
                     Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY());
-                    Console.WriteLine(takım + "Er'i sola hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                     streamWriter.WriteLine(takım + "Er'i sola hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 if (Koordinat.ReturnY() < 15 && yukarı == false)//Aşağı git
                 {
                     Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() + 1);
-                    Console.WriteLine(takım + "Er'i aşağı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                     streamWriter.WriteLine(takım + "Er'i aşağı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnX() > 0 && yukarı == false)//Mümkün değilse sola git.
                 {
                     Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY());
-                    Console.WriteLine(takım + "Er'i sağa hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                     streamWriter.WriteLine(takım + "Er'i sağa hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
             }

@@ -8,19 +8,18 @@ namespace Odev_1
 {
     class Tegmen : Asker
     {
-        StreamWriter streamWriter = File.AppendText("Kayıt.txt");
-        public override void AteşEt(List<Asker> düşman)
+        public override void AteşEt(List<Asker> düşman,StreamWriter streamWriter)
         {
             if (yaşıyorMu)
             {
                 string takım;
                 takım = hangiTakım ? "Takım 1" : "Takım 2";
-                Console.WriteLine(takım + "Teğmen'i düşman" + düşman.GetType().Name + "askerine ateş etti");
-                streamWriter.WriteLine(takım + "Teğmen'i düşman" + düşman.GetType().Name + "askerine ateş etti");
                 int[] hasar = { 10, 20, 25 };
                 int verilecekHasar = hasar[rd.Next(3)];
                 foreach (var asker in düşman)
                 {
+                    Console.WriteLine(takım + "Teğmen'i düşman" + asker.GetType().Name + "askerine ateş etti");
+                    streamWriter.WriteLine(takım + "Teğmen'i düşman" + asker.GetType().Name + "askerine ateş etti");
                     if (asker.sağlıkPuanı > verilecekHasar)
                         asker.sağlıkPuanı = 0;
                     else
@@ -29,17 +28,20 @@ namespace Odev_1
                     {
                         asker.yaşıyorMu = false;
                         streamWriter.WriteLine("ve öldürdü");
+                        Console.WriteLine("ve öldürdü");
                     }
                 }
             }
         }
 
-        public override void Bekle()
+        public override void Bekle(StreamWriter streamWriter)
         {
-            //EMPTYYYYYY
+            string takım;
+            takım = hangiTakım ? "Takım 1" : "Takım 2";
+            streamWriter.WriteLine(takım + "Teğmen'i bekledi");
         }
 
-        public override void HareketEt()
+        public override void HareketEt(StreamWriter streamWriter)
         {
             string takım;
             takım = hangiTakım ? "Takım 1" : "Takım 2";

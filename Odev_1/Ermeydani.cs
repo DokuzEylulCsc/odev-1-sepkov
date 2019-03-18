@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace Odev_1
 {
@@ -98,26 +99,23 @@ namespace Odev_1
             }
             return düşmanlar;
         }
-        public void İşlemYap(Asker asker,Takim takım1,Takim takım2,Bolge merkezBolge)
+        public void İşlemYap(Asker asker,Takim takım1,Takim takım2,Bolge merkezBolge, StreamWriter streamWriter)
         {//30 ateş,60 hareket, 10 bekleme
             double işlem = rd.NextDouble();
             if (işlem < 0.3)
             {
                 if(asker.hangiTakım == takım1.Birlik[0].hangiTakım)
-                    asker.AteşEt(BölgedekiDüşmanlar(asker, takım2, asker.Koordinat));
+                    asker.AteşEt(BölgedekiDüşmanlar(asker, takım2, asker.Koordinat),streamWriter);
                 else
-                    asker.AteşEt(BölgedekiDüşmanlar(asker, takım1, asker.Koordinat));
+                    asker.AteşEt(BölgedekiDüşmanlar(asker, takım1, asker.Koordinat),streamWriter);
             }
             else if (işlem < 0.9)
             {
-                asker.HareketEt();
+                asker.HareketEt(streamWriter);
             }
             else
             {
-                string takım;
-                takım = asker.hangiTakım ? "Takım 1" : "Takım 2";
-                Console.WriteLine(takım + " askeri bekledi");
-                asker.Bekle();
+                asker.Bekle(streamWriter);
             }
         }
     }

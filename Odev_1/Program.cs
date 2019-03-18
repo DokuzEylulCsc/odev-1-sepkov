@@ -24,12 +24,10 @@ namespace Odev_1
             for (int i = 0; i < 7; i++)
             {
                 streamWriter.WriteLine("Takım 1 Koordinatları -> " + t1.Birlik[i].Koordinat.ReturnX() + " " + t1.Birlik[i].Koordinat.ReturnY());
-                Console.WriteLine("Takım 1 Koordinatları -> " + t1.Birlik[i].Koordinat.ReturnX() + " " + t1.Birlik[i].Koordinat.ReturnY());
             }
             for (int i = 0; i < 7; i++)
             {
                 streamWriter.WriteLine("Takım 2 Koordinatları -> " + t2.Birlik[i].Koordinat.ReturnX() + " " + t2.Birlik[i].Koordinat.ReturnY());
-                Console.WriteLine("Takım 2 Koordinatları -> " + t2.Birlik[i].Koordinat.ReturnX() + " " + t2.Birlik[i].Koordinat.ReturnY());
             }
             System.Threading.Thread.Sleep(500);
 
@@ -45,9 +43,9 @@ namespace Odev_1
                     t1.Birlik[i].yaşıyorMu = false;
                 }
                 asker = t1.Birlik[rd.Next(7)];//Her seferinde takım 1in rastgele bir askeri işlem yapacak.
-                oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
+                oyun.İşlemYap(asker, t1, t2, asker.Koordinat,streamWriter);
                 asker = t2.Birlik[rd.Next(7)];//Her seferinde takım 2nin rastgele bir askeri işlem yapacak.
-                oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
+                oyun.İşlemYap(asker, t1, t2, asker.Koordinat,streamWriter);
                 //Takımların can değerleri sadece Kayıt.txt'ye kaydediliyor.
                 for (int i = 0; i < 7; i++)
                 {
