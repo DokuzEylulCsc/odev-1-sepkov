@@ -14,7 +14,6 @@ namespace Odev_1
                 string takım;
                 takım = hangiTakım ? "Takım 1" : "Takım 2";
                 Console.WriteLine(takım + "Yüzbaşı'sı ateş etti");
-                Random rd = new Random();
                 int[] hasar = { 15, 25, 40 };
                 int verilecekHasar = hasar[rd.Next(3)];
                 foreach (var asker in düşman)
@@ -38,7 +37,6 @@ namespace Odev_1
         {
             string takım;
             takım = hangiTakım ? "Takım 1" : "Takım 2";
-            Random rd = new Random();
             int gidilecekKonum = rd.Next(7);
             if (yaşıyorMu)
             {

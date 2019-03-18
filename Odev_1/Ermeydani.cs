@@ -8,6 +8,7 @@ namespace Odev_1
     class Ermeydani
     {//Oyun mantığı burada işleniyor.
         static bool takımSeçimi = false;
+        Random rd = new Random();
 
         Bolge[,] harita = new Bolge[16, 16];
 
@@ -16,7 +17,6 @@ namespace Odev_1
         public void TakımOlustur(Takim takım)
         {
             int rastgele, erSayisi = 7;
-            Random rd = new Random();
             //Yüzbaşı olma olasılığı
             rastgele = rd.Next(2);
             if(rastgele == 1)
@@ -49,7 +49,6 @@ namespace Odev_1
         public void HaritaYerleşimi(Takim takım1,Takim takım2)
         {
             //Takım1 haritanın sol alt köşesinde, Takım2 ise sağ üst köşede yer alacak.
-            Random rd = new Random();
             bool tekrarOluştur = false;
             int x, y;
             for (int i = 0; i < 7; i++)
@@ -102,7 +101,6 @@ namespace Odev_1
         }
         public void İşlemYap(Asker asker,Takim takım1,Takim takım2,Bolge merkezBolge)
         {//30 ateş,60 hareket, 10 bekleme
-            Random rd = new Random();
             double işlem = rd.NextDouble();
             if (işlem < 0.3)
             {

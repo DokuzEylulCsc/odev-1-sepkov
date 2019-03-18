@@ -10,6 +10,7 @@ namespace Odev_1
         static void Main(string[] args)
         {
             //Oyun kurulumu
+            Random rd = new Random();
             Ermeydani oyun = new Ermeydani();
             Takim t1 = new Takim();
             Takim t2 = new Takim();
@@ -25,10 +26,12 @@ namespace Odev_1
             {
                 Console.WriteLine("Takım 2 Koordinatları -> " + t2.Birlik[i].Koordinat.ReturnX() + " " + t2.Birlik[i].Koordinat.ReturnY());
             }
+            System.Threading.Thread.Sleep(500);
+
+
             //Oyun başlasın
-            /*bool herkesÖlüMü = false;
+            bool herkesÖlüMü = false;
             Asker asker;
-            Random rd = new Random();
             while (true)
             {
                 for (int i = 0; i < 7; i++)
@@ -43,8 +46,11 @@ namespace Odev_1
                 //TODO: Debug amaçlı silmeyi unutma
                 for (int i = 0; i < 7; i++)
                 {
-                    Console.WriteLine(t1.Birlik[i].sağlıkPuanı);
-                    Console.WriteLine(t2.Birlik[i].sağlıkPuanı);
+                    Console.WriteLine("Takım 1 " + t1.Birlik[i].GetType().Name + " Can " + t1.Birlik[i].sağlıkPuanı);
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    Console.WriteLine("Takım 2" + t1.Birlik[i].GetType().Name + " Can " + t2.Birlik[i].sağlıkPuanı);
 
                 }
 
@@ -64,8 +70,8 @@ namespace Odev_1
                 }
                 if (herkesÖlüMü)
                 break;
-                //System.Threading.Thread.Sleep(1);
-            }*/
+                System.Threading.Thread.Sleep(100);
+            }
 
 
             Console.Read();

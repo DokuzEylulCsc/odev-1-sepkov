@@ -12,6 +12,8 @@ namespace Odev_1
         public bool yaşıyorMu;
         public int sağlıkPuanı;
         public bool hangiTakım;//True ise takım 1, False ise takım 2
+        public Random rd = new Random(); //Full random sayılar için
+
 
         //Abstract sınıfların implementasyonları çoçuk sınıflarda gerçekleştirilmelidir.
         public abstract void HareketEt();
