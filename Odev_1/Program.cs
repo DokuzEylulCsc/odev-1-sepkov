@@ -13,9 +13,9 @@ namespace Odev_1
             Ermeydani oyun = new Ermeydani();
             Takim t1 = new Takim();
             Takim t2 = new Takim();
-            oyun.takımOlustur(t1);
-            oyun.takımOlustur(t2);
-            oyun.haritaYerleşimi(t1, t2);
+            oyun.TakımOlustur(t1);
+            oyun.TakımOlustur(t2);
+            oyun.HaritaYerleşimi(t1, t2);
 
             /*
             for (int i = 0; i < 7; i++)
@@ -41,6 +41,8 @@ namespace Odev_1
 
             //Oyun başlasın
             bool herkesÖlüMü = false;
+            Asker asker;
+            Random rd = new Random();
             while (true)
             {
                 for (int i = 0; i < 7; i++)
@@ -48,14 +50,10 @@ namespace Odev_1
                     if(t1.Birlik[i].sağlıkPuanı == 0)
                     t1.Birlik[i].yaşıyorMu = false;
                 }
-                foreach (var asker in t1.Birlik)
-                {
-                    oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
-                }
-                foreach (var asker in t2.Birlik)
-                {
-                    oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
-                }
+                asker = t1.Birlik[rd.Next(7)];//Her seferinde takım 1in rastgele bir askeri işlem yapacak.
+                oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
+                asker = t2.Birlik[rd.Next(7)];//Her seferinde takım 2nin rastgele bir askeri işlem yapacak.
+                oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
                 //TODO: Debug amaçlı silmeyi unutma
                 foreach (var item in t2.Birlik)
                 {

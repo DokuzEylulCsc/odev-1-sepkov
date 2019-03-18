@@ -14,7 +14,7 @@ namespace Odev_1
         public bool hangiTakım;//True ise takım 1, False ise takım 2
 
         //Abstract sınıfların implementasyonları çoçuk sınıflarda gerçekleştirilmelidir.
-        public abstract void HareketEt(Bolge[] olasıKonumlar);
+        public abstract void HareketEt();
 
         public abstract void Bekle();
 

@@ -13,7 +13,7 @@ namespace Odev_1
 
         public Bolge[,] Harita { get { return harita; } set { harita = value; } }
         
-        public void takımOlustur(Takim takım)
+        public void TakımOlustur(Takim takım)
         {
             int rastgele, erSayisi = 7;
             Random rd = new Random();
@@ -46,7 +46,7 @@ namespace Odev_1
             }
             takımSeçimi = true;
         }
-        public void haritaYerleşimi(Takim takım1,Takim takım2)
+        public void HaritaYerleşimi(Takim takım1,Takim takım2)
         {
             //Takım1 haritanın sol alt köşesinde, Takım2 ise sağ üst köşede yer alacak.
             Random rd = new Random();
@@ -66,13 +66,23 @@ namespace Odev_1
             }
         }
 
-        public List<Asker> askerVarsaAteşEt(Takim düşmanTakım,Bolge merkezKonum)
+        public List<Asker> BölgedekiDüşmanlar(Asker ateşEdecekAsker,Takim düşmanTakım,Bolge merkezKonum)
         {//Verilen bölge içindeki askerleri tespit eden fonksiyon.
             List<Asker> düşmanlar = new List<Asker>();
+            int rütbe = 0;//Askerin rütbesine göre kaç blok uzaktaki düşman olduğu tespit edilecek.
+            if (ateşEdecekAsker is Er)
+            {
+                rütbe = 2;
+            }
+            else if (ateşEdecekAsker is Tegmen)
+            {
+                rütbe = 3;
+            }
+            else rütbe = 4;
             for (int i = 0; i < 7; i++)
             {
-                if(düşmanTakım.Birlik[i].Koordinat.ReturnX() - merkezKonum.ReturnX() < 2 && düşmanTakım.Birlik[i].Koordinat.ReturnX() - merkezKonum.ReturnX() > -2)
-                if(düşmanTakım.Birlik[i].Koordinat.ReturnY() - merkezKonum.ReturnY() < 2 && düşmanTakım.Birlik[i].Koordinat.ReturnY() - merkezKonum.ReturnY() > -2)
+                if(düşmanTakım.Birlik[i].Koordinat.ReturnX() - merkezKonum.ReturnX() < rütbe && düşmanTakım.Birlik[i].Koordinat.ReturnX() - merkezKonum.ReturnX() > -rütbe)
+                if(düşmanTakım.Birlik[i].Koordinat.ReturnY() - merkezKonum.ReturnY() < rütbe && düşmanTakım.Birlik[i].Koordinat.ReturnY() - merkezKonum.ReturnY() > -rütbe)
                     {
                         düşmanlar.Add(düşmanTakım.Birlik[i]);
                     }
@@ -87,14 +97,14 @@ namespace Odev_1
             if (işlem < 0.3)
             {
                 if(asker.hangiTakım == takım1.Birlik[0].hangiTakım)
-                    asker.AteşEt(askerVarsaAteşEt(takım2, asker.Koordinat));
+                    asker.AteşEt(BölgedekiDüşmanlar(asker, takım2, asker.Koordinat));
                 else
-                    asker.AteşEt(askerVarsaAteşEt(takım1, asker.Koordinat));
+                    asker.AteşEt(BölgedekiDüşmanlar(asker, takım1, asker.Koordinat));
 
             }
             else if (işlem < 0.9)
             {
-                //asker.HareketEt();
+                asker.HareketEt();
             }
             else
             {
