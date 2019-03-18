@@ -8,10 +8,12 @@ namespace Odev_1
     class Bolge
     {
         private int x, y;
-        public Bolge(int x, int y)
+        private bool askerVarMı;
+        public Bolge(int x, int y,bool asker)
         {
             this.x = x;
             this.y = y;
+            this.askerVarMı = asker;
         }
         public int ReturnX()
         {
@@ -20,6 +22,10 @@ namespace Odev_1
         public int ReturnY()
         {
             return y;
+        }
+        public bool ReturnAsker()
+        {
+            return askerVarMı;
         }
     }
 }

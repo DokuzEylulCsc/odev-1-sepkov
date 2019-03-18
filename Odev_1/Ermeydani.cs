@@ -59,8 +59,8 @@ namespace Odev_1
                 do {
                     x = rd.Next(5);
                     y = rd.Next(5);
-                    b1 = new Bolge(x + 10, y);
-                    b2 = new Bolge(x, y + 10);
+                    b1 = new Bolge(x + 10, y,true);
+                    b2 = new Bolge(x, y + 10,true);
                     for (int j = 0; j < i; j++)
                     {
                         if ((takım1.Birlik[j].Koordinat.ReturnX() == b1.ReturnX() && takım1.Birlik[j].Koordinat.ReturnY() == b1.ReturnY()) || (takım2.Birlik[j].Koordinat.ReturnX() == b2.ReturnX() && takım2.Birlik[j].Koordinat.ReturnY() == b2.ReturnY()))

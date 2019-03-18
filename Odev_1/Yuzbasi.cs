@@ -50,42 +50,50 @@ namespace Odev_1
             {
                 if (Koordinat.ReturnY() > 0 && gidilecekKonum == 0)//Yukarı git
                 {
-                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() - 1);
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY(),false);
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() - 1,true);
                     streamWriter.WriteLine(takım + "Yüzbaşı'sı yukarı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnY() < 15 && gidilecekKonum == 1)//Aşağı git
                 {
-                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() + 1);
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY(),false);
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() + 1,true);
                     streamWriter.WriteLine(takım + "Yüzbaşı'sı aşağı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnX() < 15 && gidilecekKonum == 2)//Sağa git
                 {
-                    Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY());
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY(),false);
+                    Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY(),true);
                     streamWriter.WriteLine(takım + "Yüzbaşı'sı sağa hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnX() > 0 && gidilecekKonum == 3)//Sola git
                 {
-                    Koordinat = new Bolge(Koordinat.ReturnX() - 1, Koordinat.ReturnY());
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY(),false);
+                    Koordinat = new Bolge(Koordinat.ReturnX() - 1, Koordinat.ReturnY(),true);
                     streamWriter.WriteLine(takım + "Yüzbaşı'sı sola hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnY() > 0 && Koordinat.ReturnX() > 0 && gidilecekKonum == 4)//Yukarı-sola git
                 {
-                    Koordinat = new Bolge(Koordinat.ReturnX() - 1, Koordinat.ReturnY() - 1);
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY(),false);
+                    Koordinat = new Bolge(Koordinat.ReturnX() - 1, Koordinat.ReturnY() - 1,true);
                     streamWriter.WriteLine(takım + "Yüzbaşı'sı yukarı sola hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnY() > 0 && Koordinat.ReturnX() < 15 && gidilecekKonum == 5)//Yukarı-sağa git
                 {
-                    Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY() - 1);
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY(),false);
+                    Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY() - 1,true);
                     streamWriter.WriteLine(takım + "Yüzbaşı'sı yukarı-sağa hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnY() < 15 && Koordinat.ReturnX() > 0 && gidilecekKonum == 6)//Aşağı-sola git
                 {
-                    Koordinat = new Bolge(Koordinat.ReturnX() - 1, Koordinat.ReturnY() + 1);
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY(),false);
+                    Koordinat = new Bolge(Koordinat.ReturnX() - 1, Koordinat.ReturnY() + 1,true);
                     streamWriter.WriteLine(takım + "Yüzbaşı'sı aşağı-sola hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnY() < 15 && Koordinat.ReturnX() < 15 && gidilecekKonum == 7)//Aşağı-sağa git
                 {
-                    Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY() + 1);
+                    Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY(),false);
+                    Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY() + 1,true);
                     streamWriter.WriteLine(takım + "Yüzbaşı'sı aşağı-sağa hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
             }
