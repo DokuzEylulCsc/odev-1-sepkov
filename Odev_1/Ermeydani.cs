@@ -94,7 +94,6 @@ namespace Odev_1
                     {
                         if(düşmanTakım.Birlik[i].yaşıyorMu)
                         düşmanlar.Add(düşmanTakım.Birlik[i]);
-                        Console.WriteLine("Tespit edilen düşman sayısı" + düşmanlar.Count.ToString());
                     }
             }
             return düşmanlar;

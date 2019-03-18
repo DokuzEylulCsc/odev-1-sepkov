@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace Odev_1
 {
     class Er : Asker
     {
+        StreamWriter streamWriter = File.AppendText("Kayıt.txt");
         public override void AteşEt(List<Asker> düşman)
         {
             if (yaşıyorMu)
@@ -14,6 +16,7 @@ namespace Odev_1
                 string takım;
                 takım = hangiTakım ? "Takım 1" : "Takım 2";
                 Console.WriteLine(takım + "Er'i ateş etti");
+                streamWriter.WriteLine(takım + "Er'i ateş etti");
                 int[] hasar = { 10, 15, 20 };
                 int verilecekHasar = hasar[rd.Next(3)];
                 foreach (var asker in düşman)
@@ -22,6 +25,11 @@ namespace Odev_1
                         asker.sağlıkPuanı = 0;
                     else
                         asker.sağlıkPuanı = asker.sağlıkPuanı - verilecekHasar;
+                    if(asker.sağlıkPuanı <= 0)
+                    {
+                        asker.yaşıyorMu = false;
+                        streamWriter.WriteLine("ve öldürdü");
+                    }
                 }
             }
 
@@ -43,21 +51,25 @@ namespace Odev_1
                 {
                     Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() - 1);
                     Console.WriteLine(takım + "Er'i yukarı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
+                    streamWriter.WriteLine(takım + "Er'i yukarı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnX() < 15 && yukarı == true)//Mümkün değilse sağa git.
                 {
                     Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY());
                     Console.WriteLine(takım + "Er'i sola hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
+                    streamWriter.WriteLine(takım + "Er'i sola hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 if (Koordinat.ReturnY() < 15 && yukarı == false)//Aşağı git
                 {
                     Koordinat = new Bolge(Koordinat.ReturnX(), Koordinat.ReturnY() + 1);
                     Console.WriteLine(takım + "Er'i aşağı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
+                    streamWriter.WriteLine(takım + "Er'i aşağı hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
                 else if (Koordinat.ReturnX() > 0 && yukarı == false)//Mümkün değilse sola git.
                 {
                     Koordinat = new Bolge(Koordinat.ReturnX() + 1, Koordinat.ReturnY());
                     Console.WriteLine(takım + "Er'i sağa hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
+                    streamWriter.WriteLine(takım + "Er'i sağa hareket etti." + " Koordinatları" + Koordinat.ReturnX().ToString() + " " + Koordinat.ReturnY().ToString());
                 }
             }
         }

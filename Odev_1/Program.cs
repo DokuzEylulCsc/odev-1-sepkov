@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace Odev_1
 {
@@ -9,6 +10,8 @@ namespace Odev_1
     {
         static void Main(string[] args)
         {
+            StreamWriter streamWriter = File.AppendText("Kayıt.txt");
+            streamWriter.WriteLine("Oyun başladı");
             //Oyun kurulumu
             Random rd = new Random();
             Ermeydani oyun = new Ermeydani();
@@ -20,10 +23,12 @@ namespace Odev_1
 
             for (int i = 0; i < 7; i++)
             {
+                streamWriter.WriteLine("Takım 1 Koordinatları -> " + t1.Birlik[i].Koordinat.ReturnX() + " " + t1.Birlik[i].Koordinat.ReturnY());
                 Console.WriteLine("Takım 1 Koordinatları -> " + t1.Birlik[i].Koordinat.ReturnX() + " " + t1.Birlik[i].Koordinat.ReturnY());
             }
             for (int i = 0; i < 7; i++)
             {
+                streamWriter.WriteLine("Takım 2 Koordinatları -> " + t2.Birlik[i].Koordinat.ReturnX() + " " + t2.Birlik[i].Koordinat.ReturnY());
                 Console.WriteLine("Takım 2 Koordinatları -> " + t2.Birlik[i].Koordinat.ReturnX() + " " + t2.Birlik[i].Koordinat.ReturnY());
             }
             System.Threading.Thread.Sleep(500);
@@ -43,14 +48,14 @@ namespace Odev_1
                 oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
                 asker = t2.Birlik[rd.Next(7)];//Her seferinde takım 2nin rastgele bir askeri işlem yapacak.
                 oyun.İşlemYap(asker, t1, t2, asker.Koordinat);
-                //TODO: Debug amaçlı silmeyi unutma
+                //Takımların can değerleri sadece Kayıt.txt'ye kaydediliyor.
                 for (int i = 0; i < 7; i++)
                 {
-                    Console.WriteLine("Takım 1 " + t1.Birlik[i].GetType().Name + " Can " + t1.Birlik[i].sağlıkPuanı);
+                    streamWriter.WriteLine("Takım 1 " + t1.Birlik[i].GetType().Name + " Can " + t1.Birlik[i].sağlıkPuanı);
                 }
                 for (int i = 0; i < 7; i++)
                 {
-                    Console.WriteLine("Takım 2" + t1.Birlik[i].GetType().Name + " Can " + t2.Birlik[i].sağlıkPuanı);
+                    streamWriter.WriteLine("Takım 2" + t1.Birlik[i].GetType().Name + " Can " + t2.Birlik[i].sağlıkPuanı);
 
                 }
 
@@ -70,7 +75,7 @@ namespace Odev_1
                 }
                 if (herkesÖlüMü)
                 break;
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(60);
             }
 
 
